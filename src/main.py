@@ -1,1 +1,2 @@
-# loops runner
+def run_loop():
+    pass

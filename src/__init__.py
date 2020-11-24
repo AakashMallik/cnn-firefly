@@ -1,0 +1,3 @@
+"""
+    Main project entry point
+"""
