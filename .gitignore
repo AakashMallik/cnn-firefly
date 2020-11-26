@@ -129,4 +129,4 @@ dmypy.json
 .pyre/
 
 # resources
-resources/cifar10
+**/*.png
