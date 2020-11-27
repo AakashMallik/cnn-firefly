@@ -13,16 +13,19 @@ dependencies:
   - backports.functools_lru_cache=1.6.1=py_0
   - blas=1.0=mkl
   - bleach=3.2.1=pyh9f0ad1d_0
-  - ca-certificates=2020.6.20=hecda079_0
-  - certifi=2020.6.20=py38h924ce5b_2
+  - blessed=1.17.10=py38h32f6830_1
+  - ca-certificates=2020.11.8=ha878542_0
+  - certifi=2020.11.8=py38h578d9bd_0
   - cffi=1.14.3=py38he30daa8_0
   - cudatoolkit=10.1.243=h6bb024c_0
   - decorator=4.4.2=py_0
   - defusedxml=0.6.0=py_0
+  - easydict=1.9=py_0
   - entrypoints=0.3=py38h32f6830_1002
   - freetype=2.10.4=h5ab3b9f_0
   - importlib-metadata=2.0.0=py_1
   - importlib_metadata=2.0.0=1
+  - inquirer=2.7.0=py_0
   - intel-openmp=2020.2=254
   - ipykernel=5.3.4=py38h1cdfbd6_1
   - ipython=7.19.0=py38h81c977d_0
@@ -78,9 +81,11 @@ dependencies:
   - pyrsistent=0.17.3=py38h1e0a361_1
   - python=3.8.5=h7579374_1
   - python-dateutil=2.8.1=py_0
+  - python-editor=1.0.4=py_0
   - python_abi=3.8=1_cp38
   - pytorch=1.6.0=py3.8_cuda10.1.243_cudnn7.6.3_0
   - pyzmq=19.0.2=py38ha71036d_2
+  - readchar=2.0.0=py_0
   - readline=8.0=h7b6447c_0
   - send2trash=1.5.0=py_0
   - setuptools=50.3.0=py38hb0f4dca_1
