@@ -4,9 +4,8 @@ from pathlib import Path
 from inquirer import Checkbox, List, prompt
 from inquirer.themes import GreenPassion
 from src.utils.path import CONFIG_ROOT
-# from src.main import run_loop
+from src.main import Pipeline
 
-# TODO: Parsing config
 
 config_list = [config_files for config_files in CONFIG_ROOT.iterdir()
                if config_files.is_file()]
@@ -30,6 +29,11 @@ else:
 
     if answers["confirmation"] == "yes" or len(answers["configs"]) > 0:
         for config in answers["configs"]:
-            print(CONFIG_ROOT / config)
+            Pipeline.execute(
+                CONFIG_ROOT / config,
+                {
+                    "DEV_MODE": False
+                }
+            )
     else:
         print("Pipeline terminated")

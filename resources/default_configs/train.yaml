@@ -1,0 +1,50 @@
+seed: 256
+
+train:
+  epochs: 50
+  batch: 10
+  workers: 4
+  # optional
+  gradient_accumulation: ~
+
+validation:
+  freq: 1
+  batch: 10
+  workers: 4
+
+train_data:
+  name: ~
+  fold: ~
+  params:
+    transformer: ~
+    resize: ~
+
+validation_data:
+  name: ~
+  fold: ~
+  params:
+    transformer: ~
+    resize: ~
+
+model:
+  name: ~
+  classes: ~
+  prediction_type: Classification
+  tune_type: FineTuning
+  # optional
+  params: ~
+
+optimizer:
+  name: ~
+  params: ~
+
+# optional
+scheduler:
+  name: ~
+  params: ~
+
+loss:
+  name: ~
+  params: ~
+
+# more keys can be added as needed
