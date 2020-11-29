@@ -1,21 +1,21 @@
-from abc import ABC, abstractclassmethod
+from abc import ABC, abstractmethod
 from typing import Union
 
 
 class LoopInterface(ABC):
     device = None
 
-    @abstractclassmethod
-    def run_single_epoch(cls) -> Union[None, float]:
+    @abstractmethod
+    def run_single_epoch(self) -> Union[None, float]:
         """[summary]
         """
 
-    @abstractclassmethod
-    def run_epochs(cls) -> None:
+    @abstractmethod
+    def run_epochs(self) -> None:
         """[summary]
         """
 
-    @abstractclassmethod
-    def execute(cls, config=None) -> None:
-        """[summary]
-        """
+    # @abstractmethod
+    # def execute(self, config=None) -> None:
+    #     """[summary]
+    #     """

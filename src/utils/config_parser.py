@@ -1,10 +1,15 @@
 from easydict import EasyDict as edict
 from yaml import safe_load
+from functools import reduce
 from .path import DEFAULT_CONFIG_ROOT
-from .constant import PipelineType
+from .constant import PipelineType, PredictionType, TuningType
 
 
 class ConfigParser:
+    @classmethod
+    def change_case(cls, str):
+        return reduce(lambda x, y: x + ('_' if y.isupper() else '') + y, str).upper()
+
     @classmethod
     def read_yaml(cls, config_path):
         with open(config_path, 'r') as fid:
@@ -13,14 +18,12 @@ class ConfigParser:
 
     @classmethod
     def get_pipeline_type(cls, config_path):
-        strType = config_path.name.split('.')[1]
-
-        if strType == 'train':
-            return PipelineType.TRAIN
-        if strType == 'test':
-            return PipelineType.TEST
-        else:
-            raise Exception(f"pipeline type [{strType}] not defined")
+        try:
+            strType = config_path.name.split('.')[1]
+            key = cls.change_case(strType)
+            return PipelineType[key]
+        except:
+            raise Exception(f"pipeline type [{key}] not defined")
 
     @classmethod
     def get_config_name(cls, config_path):
@@ -114,6 +117,20 @@ class ConfigSanity:
         config = config.model
         if config.name is None:
             raise Exception('model.name cannot be None')
+
+        try:
+            strType = config.prediction_type
+            key = ConfigParser.change_case(strType)
+            config.prediction_type = PredictionType[key]
+        except:
+            raise Exception(f"[{key}] is not a valid prediction type")
+
+        try:
+            strType = config.tune_type
+            key = ConfigParser.change_case(strType)
+            config.tune_type = TuningType[key]
+        except:
+            raise Exception(f"[{key}] is not a valid tuning type")
 
     @classmethod
     def optimizer(cls, config):

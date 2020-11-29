@@ -1,17 +1,20 @@
 from .utils.constant import PipelineType
 from .utils.config_parser import ConfigParser
-
-# TODO wrap seed and device here itself
+from .utils.seed import seed_all
+from .utils.device import get_device
+from .loops.train import TrainingLoop
 
 
 class Pipeline:
     @classmethod
-    def train(cls, config):
-        pass
+    @seed_all
+    @get_device
+    def train(config, device):
+        loop_instance = TrainingLoop(config)
+        loop_instance(device)
 
     @classmethod
     def execute(cls, config_path, options):
-        print(config_path)
         config = ConfigParser.parse(config_path, options)
 
         print(config)
