@@ -3,22 +3,16 @@ import numpy
 import random
 
 
-def seed_all(fn):
-    def wrapper(cls, config, *args, **kwargs):
-        seed = config.seed
+def seed_all(seed):
+    print("[ Using Seed : ", seed, " ]")
 
-        print("[ Using Seed : ", seed, " ]")
-
-        torch.manual_seed(seed)
-        torch.cuda.manual_seed_all(seed)
-        torch.cuda.manual_seed(seed)
-        numpy.random.seed(seed)
-        random.seed(seed)
-        torch.backends.cudnn.deterministic = True
-        torch.backends.cudnn.benchmark = False
-
-        return fn(config, *args, **kwargs)
-    return wrapper
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+    torch.cuda.manual_seed(seed)
+    numpy.random.seed(seed)
+    random.seed(seed)
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
 
 
 def seed_worker(worker_id):

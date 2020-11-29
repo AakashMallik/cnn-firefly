@@ -7,18 +7,15 @@ from .loops.train import TrainingLoop
 
 class Pipeline:
     @classmethod
-    @seed_all
-    @get_device
-    def train(config, device):
-        loop_instance = TrainingLoop(config)
-        loop_instance(device)
+    def train(cls, config, device=None):
+        seed_all(config.seed)
+        loop_instance = TrainingLoop(config, device=get_device())
+        loop_instance()
 
     @classmethod
     def execute(cls, config_path, options):
         config = ConfigParser.parse(config_path, options)
-
-        print(config)
-
+        
         if config.pipeline_type == PipelineType.TRAIN:
             cls.train(config)
         elif config.pipeline_type == PipelineType.TEST:
